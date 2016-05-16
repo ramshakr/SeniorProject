@@ -1,0 +1,192 @@
+<section id="main-slider" class="no-margin">
+        <div class="carousel slide">
+            <ol class="carousel-indicators">
+                <li data-target="#main-slider" data-slide-to="0" class="active"></li>
+                <li data-target="#main-slider" data-slide-to="1"></li>
+                <li data-target="#main-slider" data-slide-to="2"></li>
+            </ol>
+            <div class="carousel-inner">
+
+                <div class="item active" style="background-image: url(images/slider/bg1.jpg)">
+                    <div class="container">
+                        <div class="row slide-margin">
+                            <div class="col-md-6">
+                                <div class="carousel-content">
+                                    <h1 class="animation animated-item-1">Travel Management System</h1>
+                                    <h2 class="animation animated-item-2">Manage Itineraries and Design precise and accurate Schedules with all the Relevant Information</h2>
+                                    <div class="btn-group">
+                                        <button class="btn btn-slide animation animated-item-3" ng-click="seelogin()">Login</button>
+                                        <a class="btn btn-facebook animation animated-item-3" href="/auth/facebook"> <i class="fa fa-facebook-square"></i> Log in with Facebook</a>
+
+                                        <!-- <button class="btn btn-facebook animation animated-item-3" href="/auth/facebook"><i class="fa fa-facebook-square"></i> Log in with Facebook</button> -->
+                                    </div>
+
+                        
+                                    <form class="form" ng-submit="login()" ng-show="loginform">
+                                        <div class="form-group">
+                                        <br>
+                                          <input type="text" placeholder="Username" class="form-control" name="username" ng-model="loginForm.username" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="password" placeholder="Password" class="form-control" name="password" ng-model="loginForm.password" required>
+                                          </div>
+                                        <div>
+                                            <button type="submit" class="btn btn-done" ng-disabled="disabled">Done</button>
+                                        </div>
+                                    </form>
+
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="carousel-content">
+                                    <a class="btn btn-slide animation animated-item-3" ng-click="seeregister()">Sign up</a>
+                                     <form class="form" ng-submit="register()" ng-show="registerform" ng-controller="registerController">
+                                        <div class="form-group">
+                                          <!-- <label>Username</label> -->
+                                          <br>
+                                          <input type="text" placeholder="Username" class="form-control" name="username" ng-model="registerForm.username" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="password" placeholder="Password" class="form-control" name="password" ng-model="registerForm.password" required>
+                                          </div>
+                                          <div>
+                                            <button type="submit" class="btn btn-slide" ng-disabled="disabled">Register</button>
+                                        </div>
+                                    </form>
+                              </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div><!--/.item-->
+
+                <div class="item" style="background-image: url(images/slider/bg2.jpg)">
+                    <div class="container">
+                        <div class="row slide-margin">
+                            <div class="col-md-6">
+                                <div class="carousel-content">
+                                    <h1 class="animation animated-item-1">Travel Management System</h1>
+                                    <h2 class="animation animated-item-2">Manage Itineraries and Design precise and accurate Schedules with all the Relevant Information</h2>
+                                    <!-- <a class="btn-slide animation animated-item-3" href="#">Read More</a> -->
+                                    <div class="btn-group">
+                                        <button class="btn btn-slide animation animated-item-3" ng-click="seelogin()">Login</button>
+
+
+                                        <!-- <button href="/auth/facebook" class="btn btn-facebook animation animated-item-3"><i class="fa fa-facebook-square"></i> Log in with Facebook</button> -->
+                                        <a class="btn btn-facebook animation animated-item-3" href="/auth/facebook"> <i class="fa fa-facebook-square"></i> Log in with Facebook</a>
+                                    </div>
+
+                                    <div ng-show="error" class="alert alert-danger">{{errorMessage}}</div>
+                                     <form class="form" ng-submit="login()" ng-show="loginform">
+                                        <div class="form-group">
+                                          <label color="white">Username</label>
+                                          <input type="text" class="form-control" name="username" ng-model="loginForm.username" required>
+                                        </div>
+                                        <div class="form-group">
+                                          <label>Password</label>
+                                            <input type="password" class="form-control" name="password" ng-model="loginForm.password" required>
+                                          </div>
+                                        <div>
+                                            <button type="submit" class="btn btn-default" ng-disabled="disabled">Done</button>
+                                        </div>
+                                    </form>
+
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="carousel-content">
+                                    <a class="btn btn-slide animation animated-item-3" ng-click="seeregister()">Sign up</a>
+                                     <form class="form" ng-submit="register()" ng-show="registerform">
+                                        <div class="form-group">
+                                          <label>Username</label>
+                                          <input type="text" class="form-control" name="username" ng-model="registerForm.username" required>
+                                        </div>
+                                        <div class="form-group">
+                                          <label>Password</label>
+                                            <input type="password" class="form-control" name="password" ng-model="registerForm.password" required>
+                                          </div>
+                                          <div>
+                                            <button type="submit" class="btn btn-slide" ng-disabled="disabled">Register</button>
+                                        </div>
+                                    </form>
+                              </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div><!--/.item-->
+
+                <div class="item" style="background-image: url(images/slider/bg3.jpg)">
+                    <div class="container">
+                        <div class="row slide-margin">
+                            <div class="col-md-6">
+                                <div class="carousel-content">
+                                    <h1 class="animation animated-item-1">Travel Management System</h1>
+                                    <h2 class="animation animated-item-2">Manage Itineraries and Design precise and accurate Schedules with all the Relevant Information</h2>
+                                    <!-- <a class="btn-slide animation animated-item-3" href="#">Read More</a> -->
+                                    <div class="btn-group">
+                                        <button class="btn btn-slide animation animated-item-3" ng-click="seelogin()">Login</button>
+                                        <a class="btn btn-facebook animation animated-item-3" href="/auth/facebook"> <i class="fa fa-facebook-square"></i> Log in with Facebook</a>
+
+                                        <!-- <button class="btn btn-facebook animation animated-item-3" href="/auth/facebook"><i class="fa fa-facebook-square"></i> Log in with Facebook</button> -->
+                                    </div>
+
+                                     <form class="form" ng-submit="login()" ng-show="loginform">
+                                        <div class="form-group">
+                                          <label color="white">Username</label>
+                                          <input type="text" class="form-control" name="username" ng-model="loginForm.username" required>
+                                        </div>
+                                        <div class="form-group">
+                                          <label>Password</label>
+                                            <input type="password" class="form-control" name="password" ng-model="loginForm.password" required>
+                                          </div>
+                                        <div>
+                                            <button type="submit" class="btn btn-default" ng-disabled="disabled">Done</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="carousel-content">
+                                    <a class="btn btn-slide animation animated-item-3" ng-click="seeregister()">Sign up</a>
+                                     <form class="form" ng-submit="register()" ng-show="registerform">
+                                        <div class="form-group">
+                                          <label>Username</label>
+                                          <input type="text" class="form-control" name="username" ng-model="registerForm.username" required>
+                                        </div>
+                                        <div class="form-group">
+                                          <label>Password</label>
+                                            <input type="password" class="form-control" name="password" ng-model="registerForm.password" required>
+                                          </div>
+                                          <div>
+                                            <button type="submit" class="btn btn-slide" ng-disabled="disabled">Register</button>
+                                        </div>
+                                    </form>
+                              </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div><!--/.item-->
+            </div><!--/.carousel-inner-->
+        </div><!--/.carousel-->
+        
+    </section><!--/#main-slider-->
+
+    <section id="conatcat-info">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-8">
+                    <div class="media contact-info wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
+                        <div class="pull-left">
+                            <i class="fa fa-phone"></i>
+                        </div>
+                        <div class="media-body">
+                            <h2>Have a question or need a custom quote?</h2>
+                            <p>Contact Us at 123456789</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!--/.container-->    
+    </section><!--/#conatcat-info-->

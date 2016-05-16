@@ -1,0 +1,183 @@
+<section id="portfolio" style="background-color:#E5EFF0; color:#fff">
+    <div class="container">
+      <div class="center">
+        <!-- <br> -->
+         <div class="h22">Trip Detail</div>
+         <div class="h23">Click on the Activity to discover the Day Detail</div>
+         
+      </div>
+    </div>
+</section>
+
+<div class="col-xs-12 col-sm-2">
+</div>
+<section class="pricing-area shortcode-item">
+  <div class="col-xs-12 col-sm-5 plan price-one wow fadeInDown">
+    <ul>
+      <li class="heading-one">
+      <div class="row text-center">
+          <h3>{{tripname}}</h3>
+          </div>
+      </li>
+        <table>
+          <div class="accordion">
+            <div ng-repeat="x in tripview | orderBy: 'Day':false">
+              <div class="panel-group" id="accordion1">
+                <div class="panel panel-default">
+                  <div class="panel-heading active">
+                    <h3 class="panel-title">
+                      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" href="#collapseOne1">
+                        Day {{$index+1}} 
+                        <a href="#dayview/{{x._id}}"><i class="fa fa-angle-right pull-right" href="#dayview/{{x._id}}"></i></a>
+                      </a>
+                    </h3>
+                  </div>
+
+                  <div id="collapseOne1" class="panel-collapse collapse in">
+                    <div class="panel-body">
+                        <div class="media accordion-inner">
+                              
+                              <div class="media-body">
+                                   <h4><a href="#dayview/{{x._id}}">{{ x.Day|date:'EEEE' }}, {{ x.Day|date:'MMM dd, yyyy' }}</a></h4>
+                                   <p ng-hide="editting">{{ x.Act }}</p>
+                                   <div style="float:right">
+                                    <a href="" ng-if="usertrip==1" ng-click="DeleteDay(x._id)">delete</a>
+                                  </div>
+                                   <p ng-show="editting"><input type="text" ng-model="x.Act" placeholder="Activity" size="55" ng-required/></p>
+                              </div>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+          <br>
+        </table>
+    </ul>
+    <br>
+<form ng-show="editting" ng-click="editting=false" ng-submit="SaveChange()">
+        <input ng-if="usertrip==1" type="submit" id="submit" value="Submit" class="btn btn-primary readmore" required="required"/>
+      </form>
+      <button href="" ng-click="editting=true" ng-hide="editting" class="btn btn-primary readmore" required="required">Edit Trip</button>
+      <br>
+    <div>
+    <h5>Reviews</h5>
+      <div style="background-color:#E5EFF0; color:#0000cd" ng-repeat="xx in gottenreviews">
+              
+       <p>{{xx.reviews}}</p>
+       <!-- <br> -->
+      </div>
+    </div>
+    <br>
+
+      
+
+        <div ng-if="usertrip!=1 && usertrip !=2">
+    <div>
+      <div class="alert alert-success"> <span class="label label-info">Star Rating</span>
+      <br>
+<br>
+          <div star-rating rating="starRating1" read-only="false" max-rating="10" click="click1(param)" mouse-hover="mouseHover1(param)" mouse-leave="mouseLeave1(param)"></div>
+          <br>
+          <div> <span class="label label-primary">Star Rating: {{starRating1}}</span>
+           <span class="label label-primary">Hover Rating: {{hoverRating1}}</span>
+
+          </div>
+          <br>
+          <div>
+          <form >
+            <textarea  ng-model="reviews1" required>Reviews</textarea>
+            <!-- {{reviews1}} -->
+            <!-- Title: <input type = "text" ng-model="reviews1" /> -->
+            <input class="btn btn-primary" type="submit" id="submit" value="Add a Review"  ng-click="addreview(reviews1)"/>
+            <!-- <button type="submit" ng-submit="addreview(reviews1)">Done</button> -->
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <br>
+    <div ng-if="usertrip==1">
+               <label style="padding-top:20px; padding-bottom:20px">Add People</label>
+        <input type="text" ng-model ="gid"list="comicstitle">
+        <datalist id="comicstitle">
+          <option  data-ng-repeat="ttl in titles" value="{{ttl}}">
+        </datalist>
+        
+       <input type="Button" class="btn btn-primary readmore" value="Add" data-ng-click="addItem(gid)">
+      <!-- </div> -->
+    <br>
+    <a  href="#daycreation/{{tripid}}/{{daynum}}/{{daydate}}" class="btn btn-primary readmore" required="required">+ Add a Day</a>
+    <br>
+    <br>
+    <p><a href="#upc">Back to Upcoming Trips</a></p>
+  </div>
+</section>
+
+<section class="pricing-area shortcode-item">
+<div class="col-xs-12 col-sm-3" style="padding-top:30px">
+<ul>
+  
+    <li class="heading-five">
+      <div class="row text-center">
+        <h3>Relevant Information</h3>
+      </div>
+    </li>
+  <div class="widget" >
+    <div ng-if="distancethings1.length > 0">
+    <h4>Distances and Durations</h4>
+      <div id="moregap">
+        <p><hh>{{distancethings1[0].origin}} to {{distancethings1[0].dest}}</hh><br>
+        Distance = {{distancethings1[0].distance}} and Duration = {{distancethings1[0].duration}}</p>
+      </div>
+      </div>
+
+      <div class="wrapper">
+        <p ng-hide="showme"></p>
+        <div ng-show="showme">
+          <div ng-repeat="x in distancethings1" ng-if="$index>0">
+            <div id="moregap">
+              <p><hh>{{x.origin}} to {{x.dest}}</hh><br>
+              Distance = {{x.distance}} and Duration = {{x.duration}}</p>
+            </div>
+          </div>
+          <a ng-click="showme=false">Hide</a>
+        </div> 
+      </div>
+
+      <div ng-show="distancethings1.length > 2">
+        <a href="" ng-click="showme=true" ng-hide="showme">More Calculations</a>
+      </div>
+
+      <hr style="clear:both" />
+      <div id="map" style="clear:both"></div>
+      <hr style="clear:both" />
+      <h4>Cities included in the Trip</h4>
+      <div id="moregap">
+        <div id="class" ng-repeat="marker in markers | orderBy : 'title'">
+          <li>
+            <a href="#" ng-click="openInfoWindow($event, marker)">{{marker.title}}</a>
+          </li>
+        </div>
+      </div>
+      <br>
+      
+</div>
+</ul>
+</div>
+<div class="col-xs-12 col-sm-1">
+</div>
+<!-- </div> -->
+</section>
+
+<section id="portfolio">
+    <div class="container">
+      <div class="center">
+        <br>
+         
+      </div>
+    </div>
+</section>

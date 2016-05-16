@@ -1,0 +1,163 @@
+<section id="portfolio" style="background-color:#E5EFF0; color:#fff">
+    <div class="container">
+      <div class="center">
+        <!-- <br> -->
+         <div class="h22">Day Detail</div>
+         <div class="h23">See the activities of a Day in detail</div>
+         
+      </div>
+    </div>
+</section>
+
+<br>
+<div class="col-xs-12 col-sm-2">
+</div>
+
+<section class="pricing-area shortcode-item">
+  <div class="col-xs-12 col-sm-5">
+    <ul>
+      <li class="heading-one">
+          <div class="row text-center">
+              <h3>{{dayactname}}</h3>
+        </div>
+      </li>
+      <table class="pricing-area">
+          <div class="accordion">
+
+              <div ng-repeat="x in dayview | orderBy: 'Hr':false">
+                  <div class="panel-group" id="accordion1">
+                      <div class="panel panel-default">
+
+                        <div class="row">
+                          <div style="clear: both">
+                          <!-- <p ng-hide="editting">{{ x.Act }}</p>
+                                   <p ng-show="editting"><input type="text" ng-model="x.Act" placeholder="Activity" size="55" ng-required/></p> -->
+                            <div ng-hide="editting" class="hhr" style="float: left">{{ x.Act }}</div>
+                            <div ng-show="editting" class="hhr" style="float: left"><input type="text" ng-model="x.Act" placeholder="Activity" size="25" ng-required/></div>
+                            <div ng-hide="editting" class="hhr" style="float: right">{{x.Hr}}</div>
+                            <div ng-show="editting" class="hhr" style="float: right"><input type="text" ng-model="x.Hr" placeholder="Hour" size="25" ng-required/></div>
+                            
+                          </div>
+                        </div>
+                      
+                        <div class="nnhr"></div>
+                        <div class="panel-body">
+                          <div class="media-body">
+                              <p ng-hide="editting">{{ x.Place }}</p>
+                              <p ng-show="editting"><input type="text" ng-model="x.Place" placeholder="Place" size="45" ng-required/></p>
+                            
+                              <div ng-hide="editting" class="h20">{{ x.Hotel }}<span><a ng-if="x.maplink" href={{x.maplink}}>Show on Map</a></span></div>
+                              <div ng-show="editting" class="h20"><input type="text" ng-model="x.Hotel" size="55" ng-required/><span><a ng-if="x.maplink" href={{x.maplink}}>Show on Map</a></span></div>
+                              <div ng-if="x.hotelinfo" class="blkk"><img ng-src={{x.hotelinfo}} alt="" /> </div>
+                              <div ng-if="x.hotelinfo" class="blkk2">
+                                <p ng-if="x.rating"><strong>Rating : </strong>{{x.rating}}</p>
+                                <!-- <br> -->
+                                <p ng-if="x.address"><strong>Address: </strong>{{x.address}}</p>
+                                <!-- <br> -->
+                                <p><a ng-if="x.deeplink" href={{x.deeplink}}>View Details</a></p>
+                              </div>
+                          </div>
+                        </div>
+                      </div>
+                  </div>
+              </div>
+              <br>
+          </div>
+      </table>
+    </ul>
+    <br>
+    
+    <form ng-show="editting" ng-click="editting=false" ng-submit="SaveChange()">
+      <input ng-if="usertrip==1" type="submit" id="submit" value="Submit" class="btn btn-primary readmore" required="required"/>
+    </form>
+    <button href="" ng-click="editting=true" ng-hide="editting" class="btn btn-primary readmore" required="required">Edit Day</button>
+    <br><br>
+    <a href="#tripview/{{back_id}}">Back to Trip View</a>
+  </div>
+</section>
+
+<section class="pricing-area shortcode-item">
+<div class="col-xs-12 col-sm-3">
+<ul>
+  
+    <li class="heading-five">
+      <div class="row text-center">
+        <h3>Relevant Information</h3>
+      </div>
+    </li>
+  <div class="widget" >
+    <div ng-if="distancethings.length > 0">
+    <h4>Distances and Durations</h4>
+
+      <div id="moregap">
+        <p><hh>{{distancethings[0].origin}} to {{distancethings[0].dest}}</hh><br>
+        Distance = {{distancethings[0].distance}} and Duration = {{distancethings[0].duration}}</p>
+      </div>
+      </div>
+      <div class="wrapper">
+        <p ng-hide="showme"></p>
+        <div ng-show="showme">
+          <div ng-repeat="x in distancethings" ng-if="$index>0">
+            <div id="moregap">
+              <p><hh>{{x.origin}} to {{x.dest}}</hh><br>
+              Distance = {{x.distance}} and Duration = {{x.duration}}</p>
+            </div>
+          </div>
+          <a ng-click="showme=false">Hide</a>
+        </div> 
+      </div>
+
+      <div ng-show="distancethings.length > 2">
+        <a href="" ng-click="showme=true" ng-hide="showme">More Calculations</a>
+      </div>
+	    <hr style="clear:both" />
+	    <div id="map" style="clear:both"></div>
+	    <hr style="clear:both" />
+  		<h4>Cities included in the Trip</h4>
+  		<div id="moregap">
+		    <div id="class" ng-repeat="marker in markers | orderBy : 'title'">
+			    <li>
+			      <a href="#" ng-click="openInfoWindow($event, marker)">{{marker.title}}</a>
+			        <a ng-click="search3(marker.title);showme2=true">-Show All Hotels</a> 
+					  <div ng-show="showme2">
+					  	<a ng-click="showme2=false;erasemarkers()">Back</a>
+					  	<div ng-repeat="marker2 in markers11 | orderBy : 'title'">
+						      <a href="#" ng-click="openInfoWindow($event, marker2)">{{marker2.title}}</a>
+						</div>
+					 <a ng-click="showme2=false;erasemarkers()">Back</a> 
+			    </li>
+		    </div>
+	    </div>
+	    <br>
+	    <!-- <h4>Places of the Day</h4>
+	    <div id="moregap">
+			<div ng-repeat="marker22 in markers22 | orderBy : 'title'">
+				<li>
+				    <a href="#" ng-click="openInfoWindow($event, marker22)">{{marker22.title}}</a> 
+			    </li>
+			</div> -->
+      <h4> Weather Forecast</h4>
+
+      <div ng-repeat="cityforweather in citiesforweather">
+        <div style="width: 100%; background-color: #fff;">
+          <iframe style="overflow:hidden;border:none" allowtransparency="true" width="100%" height="225" ng-src="{{cityforweather}}" horizontalscrolling="yes" frameborder="5px" marginwidth="0" marginheight="0"></iframe>
+        </div>
+        <br>
+     </div>
+
+
+
+		</div>
+		<br>
+	</div>
+</div>
+</section>
+
+<section id="portfolio">
+    <div class="container">
+      <div class="center">
+        <br>
+         
+      </div>
+    </div>
+</section>

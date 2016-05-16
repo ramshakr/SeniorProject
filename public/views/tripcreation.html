@@ -1,0 +1,55 @@
+<section id="portfolio">
+    <div class="container">
+      <div class="center">
+        <br>
+         <h2>Trip Detail</h2>
+         <p class="lead">Click on the Activity to discover the Day Detail</p>
+      </div>
+    </div>
+</section>
+
+
+<section class="pricing-area shortcode-item">
+    <div class="container">
+        <div class="col-xs-12 col-sm-7 plan price-one wow fadeInDown">
+            <form ng-submit="onSubmit(newItem)">
+              <label>Title</label> <input type = "text" class="form-control" ng-model="upcname" />
+              <br>
+              <label>Image Url</label> <input type = "text" class="form-control" ng-model="upcimg" />
+              
+              <br>
+              <label>Add City</label> 
+              <input id="from1" type="text" class="form-control" required="required" ng-model="user1.from1" placeholder="Type City" class="ng-pristine ng-valid" autocomplete="off">
+                <input type="hidden" ng-model="user1.fromLat1">
+                <input type="hidden" ng-model="user1.fromLng1">
+
+                <br>
+                <input id="from2" type="text" class="form-control" required="required" ng-model="user2.from2" placeholder="Type City" class="ng-pristine ng-valid" autocomplete="off">
+                <input type="hidden" ng-model="user2.fromLat2">
+                <input type="hidden" ng-model="user2.fromLng2">
+
+                <br>
+                <input id="from3" type="text" class="form-control" required="required" ng-model="user3.from3" placeholder="Type City" class="ng-pristine ng-valid" autocomplete="off">
+                <input type="hidden" ng-model="user3.fromLat3">
+                <input type="hidden" ng-model="user3.fromLng3">
+
+
+              <br>
+              <br>
+              <input type="radio" ng-model="privacy" value="private">
+              Private
+              <br/>
+              <input type="radio" ng-model="privacy" value="public">
+              Public
+              <br/><br>
+
+              <button type="button" class="btn btn-primary readmore" ng-click="addSummary()">Done</button>
+            </form>
+            
+            <br>
+            <br>
+            <p><a href="#upc">Back to Upcoming Trips</a></p>
+        </div>
+    
+</section>
+

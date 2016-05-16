@@ -1,0 +1,120 @@
+<section id="portfolio" style="background-color:#E5EFF0; color:#fff">
+    <div class="container">
+      <div class="center">
+        <!-- <br> -->
+         <div class="h22">Upcoming Trips</div>
+         <div class="h23">See all Upcoming Trips and Join a Trip. Click on images to discover the Trips</div>
+         
+      </div>
+    </div>
+</section>
+
+<section id="portfolio">
+    <div class="container">    
+    <br>
+    <div class="row" style="float: left">
+    	<input id="from" type="text" size="40px" class="form-control1" required="required" ng-model="user.from" placeholder="Search by City" autocomplete="off">
+	    <input type="hidden" ng-model="user.fromLat">
+	    <input type="hidden" ng-model="user.fromLng">
+	    <button type="button" ng-click="saveAll()" class="btn btn-primary readmore" required="required" ng-disabled="isDisabledall">Search</button>
+    </div>
+
+	<div style="clear:both;"></div>
+        <div class="row">
+	        <div class="portfolio-items">
+			    <div ng-repeat="x in upc">
+	                <div class="portfolio-item apps col-xs-12 col-sm-4 col-md-3">
+	                    <div class="recent-work-wrap">
+	                        <img class="img-responsive" ng-src="{{x.Src}}" alt="">
+	                        <div class="overlay">
+	                            <div class="recent-work-inner">
+	                                
+	                                <p>{{x.Name}}</p>
+	                                
+	                                <p>{{x.stars}} Stars</p>
+	                                <a class="preview" href="#tripview/{{x._id}}" rel="prettyPhoto"><i class="fa fa-eye"></i> View Trip Detail</a>
+	                            </div> 
+	                        </div>
+	                    </div>
+	                </div>
+	                <div class="portfolio-item apps col-xs-12 col-sm-4 col-md-1">
+	                </div>
+	            </div>
+	        </div>
+	        <br><br><br>
+	    </div>
+	    <br>
+	    
+	    <div ng-if="upc1 != null">
+	    	<div class="center">
+	      		<h2>My Trips</h2>
+	       		<div class="row">
+			        <div class="portfolio-items">
+					    <div ng-repeat="x in upc1">
+			                <div class="portfolio-item apps col-xs-12 col-sm-4 col-md-3">
+			                    <div class="recent-work-wrap">
+			                        <img class="img-responsive" ng-src="{{x.Src}}" alt="">
+			                        <div class="overlay">
+			                            <div class="recent-work-inner">
+			                                
+			                                <p>{{x.Name}}</p>
+	                                <p>{{x.stars}} Stars</p>
+			                                <a class="preview" href="#tripview/{{x._id}}" rel="prettyPhoto"><i class="fa fa-eye"></i> View Trip Detail</a>
+			                                
+			                            </div> 
+
+			                        </div>
+			                        <div style="float:right">
+	                                    <a href="" ng-click="DeleteTrip(x._id)">delete</a>
+	                                  </div>
+			                    </div>
+			                </div>
+			                <div class="portfolio-item apps col-xs-12 col-sm-4 col-md-1">
+			                </div>
+			            </div>
+			        </div>
+
+			    </div>
+	        </div>
+	    </div>
+	    <a class="btn btn-primary readmore" href="#tripcreation">+ Add Trips</a>
+	    <br><br>
+	    <div ng-if="group[0] != null">
+	    	<div class="center">
+		        <br>
+          		<h2>Groups I am added in</h2>
+           		<div class="row">
+			        <div class="portfolio-items">
+					    <div ng-repeat="x in group">
+			                <div class="portfolio-item apps col-xs-12 col-sm-4 col-md-3">
+			                    <div class="recent-work-wrap">
+			                        <img class="img-responsive" ng-src="{{x.Src}}" alt="">
+			                        <div class="overlay">
+			                            <div class="recent-work-inner">
+			                                
+			                                <p>From: {{x.Name}}</p>
+	                                <p>{{x.stars}} Stars</p>
+			                                <a class="preview" href="#tripview/{{x._id}}" rel="prettyPhoto"><i class="fa fa-eye"></i> View Trip Detail</a>
+			                            </div> 
+			                        </div>
+			                    </div>
+			                </div>
+			                <div class="portfolio-item apps col-xs-12 col-sm-4 col-md-1">
+			                </div>
+			            </div>
+			        </div>
+			        <!-- <a href="/logout">Logout</a> -->
+			    </div>
+	        </div>
+	    </div>
+
+	     <div ng-if="loginuser!= null">
+	     		
+	     		<br>
+	     		<br>
+	     		<a class="btn btn-primary readmore" href="/logout">Logout</a>
+	     </div>
+
+    </div>
+
+</section>

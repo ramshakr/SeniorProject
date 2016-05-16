@@ -1,0 +1,2 @@
+angular.module('scotchApp', ['ngRoute', 'appRoutes', 'AuthService', 'LoginCtrl','LogoutCtrl','RegisterCtrl','TripcreationCtrl','TripviewCtrl','AboutCtrl','ContactCtrl','UpcCtrl','DaycreationCtrl','DayviewCtrl','directive1', 'directive2', 'directive3']);
+//scotchApp.value('index', 0);

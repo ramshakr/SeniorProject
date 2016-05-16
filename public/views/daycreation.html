@@ -1,0 +1,214 @@
+<!-- <style>
+ #items {
+            left: 500px;
+        }
+ 
+        #dropbox {
+            left: 424px;
+        }
+         
+        #items, #dropbox {
+            position: absolute;
+            width: 200px;
+            min-height: 260px;
+            border: 2px solid black;
+        }
+ 
+        div.item {
+            float: left;
+            min-width: 160px;
+            min-height: 30px;
+            border: 2px solid rgb(5,161,245);
+            margin: 10px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+</style>-->
+
+<section id="portfolio" style="background-color:#E5EFF0; color:#fff">
+    <div class="container">
+      <div class="center">
+        <!-- <br> -->
+         <div class="h22">Day Creation</div>
+         <div class="h23">All details of a Day</div>
+         
+      </div>
+    </div>
+</section>
+
+<div class="col-xs-12 col-sm-1">
+</div>
+
+
+
+<section id="blog" >
+    
+    <div class="blog">
+        <div class="col-xs-12 col-sm-7 plan price-one wow fadeInDown">
+	        <div id="contact-page clearfix">    
+	        	<div ng-show="day1!=true">  
+		            <label2>Day {{daynum}}, {{daydate|date:'EEE'}} ({{daydate|date:'MMM dd, yyyy'}}) </label2><br><br>
+	            </div>
+
+
+	            <form name="myform" ng-hide="takesummary" ng-submit="addSummary1()">
+		            <div ng-hide="day1!=true">  
+			            <label2>Day {{daynum}}</label2>
+			            <input type = "date" class="form-control" required="required" ng-model="daydate" style="width: 200px" />
+		            </div>
+		            <br>
+		            <label1>Summary *</label1>
+	            	<input type = "text" class="form-control" required="required" ng-model="dayactivity" style="width: 400px" />
+	        		<br>
+				    <input type="submit" id="submit" ng-click="takesummary=true" value="Add Summary" ng-disabled="myform.$invalid" class="btn btn-primary readmore" required="required"/>
+	    		</form>
+			</div>
+	        <div ng-show="takesummary">
+		        <label1>Summary: </label1><label2>{{dayactivityadded}}</label2>
+		        <br><br>
+		        <button href="" ng-click="takesummary=false" ng-show="takesummary" class="btn btn-primary readmore" required="required">Edit Summary</a></button>
+	        </div>
+	    	<br><br>
+        	<form id="main-contact-form" name="myform1" class="contact-form" ng-submit="onSubmit(newItem)">
+			    <table>
+			    <th>Time</th>
+			        <th>Activity</th>
+			        <th>City</th>
+			        <th>Location</th>
+			        <!-- <th> here</th> -->
+			    <tr ng-repeat="row in rows">
+			        <td>{{row.initHr}} - {{row.Hr}}</td>
+			        <td>{{row.Act}}</td>
+			        <td>{{row.Place}}</td>
+			        <td>{{row.Hotel}}</td>
+			       <!--  <td>
+						{{row.here}}
+			    	</td> -->
+			    </tr>
+
+			    <tr ng-show="rowscheck == false">    
+			        <td>
+			        	{{init_time}} - 
+			        	<select ng-model="daypost" class="form-control" ng-disabled="isDisabled">
+				        	<option ng-repeat="time in timeselect" value="{{time}}">{{time}}</option>
+			        	</select>
+			        </td>
+			        <td>
+			            <input type = "text" ng-disabled="isDisabled" required="required" class="form-control" ng-model="dayact" />
+			        </td>
+			        <td>
+			            <input id="from" type="text" class="form-control" required="required" ng-disabled="isDisabled" ng-model="user.from" ng-blur="handleChangeEvent()" placeholder="Type City" class="ng-pristine ng-valid" autocomplete="off">
+				        <input type="hidden" ng-model="user.fromLat">
+				        <input type="hidden" ng-model="user.fromLng">
+			        </td>
+			        <td>
+		            	<input  type="text" class="form-control" ng-disabled="isDisabled" droppable1="true" ng-places-autocomplete ng-model ="dayhotel" />
+			        </td>
+
+			        <td>
+			        	<button type="button" ng-click="addActivity()" class="btn btn-primary readmore" required="required" ng-disabled="myform1.$invalid">Add</button>
+			        </td>
+			    </tr>
+			    </table>
+			    <br>
+          <!-- <a class="btn btn-primary readmore" href="/logout">Logout</a> -->
+			    <button type="button" ng-click="saveAll()" class="btn btn-primary readmore" required="required" ng-disabled="isDisabledall">Save</button>
+			    <br><br>
+			    <a href="#tripview/{{back_id}}">Back to Trip View</a>
+			    </div>
+			</form>
+
+            <br>
+            <br>
+	<!-- <div> -->
+		</div>
+	</div>
+    
+</section>
+
+
+<section class="pricing-area shortcode-item">
+<div class="col-xs-12 col-sm-3">
+<ul>
+  
+    <li class="heading-five">
+      <div class="row text-center">
+        <h3>Relevant Information</h3>
+        <div class="whitee">You can drag the suggested places in Location Box</div>
+      </div>
+    </li>
+  <div class="widget" >
+          
+      <table class="pricing-area">
+          <div class="accordion">
+          <div ng-if="samecityarr.length>0"><h4>Suggested Itinerary that includes {{user.from}}</h4></div>
+            <div ng-repeat="xc in samecityarr">
+              <a href="#tripview/{{xc.idc}}">{{xc.name}}</a>
+            </div>
+
+				<div ng-if="googlehotels1att"><h4>Suggested Attractions in {{user.from}}</h4></div>
+              <div ng-repeat="x in googlehotels1att" draggable1="true" itemid="{{x.name}}">
+                  <div class="panel-group" id="accordion1">
+                  
+                      <div class="panel panel-default">
+                      	
+                        <div class="panel-body">
+                          <div class="media-body">
+                              <p>{{ user.from }}</p>
+                              <div class="h20">{{ x.name }}<span><a ng-if="x.maplink" href={{x.maplink}}>Show on Map</a></span></div>
+                              <div class="blkkcreate"><img ng-src={{x.hotelimg}} alt="" /> </div>
+                              <div class="blkk2create">
+                                <p ng-if="x.rating"><strong>Rating : </strong>{{x.rating}}</p>
+                                <!-- <br> -->
+                                <p ng-if="x.address"><strong>Address: </strong>{{x.address}}</p>
+                                <!-- <br> -->
+                                <p><a ng-if="x.deeplink" href={{x.deeplink}}>View Details</a></p>
+                              </div>
+                          </div>
+                        </div>
+                      </div>
+                  </div>
+              </div>
+				<div ng-if="googlehotels1"><h4>Suggested Hotels in {{user.from}}</h4></div>
+              <div ng-repeat="x in googlehotels1" draggable1="true" itemid="{{x.name}}">
+                  <div class="panel-group" id="accordion1">
+
+                      <div class="panel panel-default">
+                      
+                        <div class="panel-body">
+                          <div class="media-body">
+                              <p>{{ user.from }}</p>
+                              <div class="h20">{{ x.name }}<span><a ng-if="x.maplink" href={{x.maplink}}>Show on Map</a></span></div>
+                              <div class="blkkcreate"><img ng-src={{x.hotelimg}} alt="" /> </div>
+                              <div class="blkk2create">
+                                <p ng-if="x.rating"><strong>Rating : </strong>{{x.rating}}</p>
+                                <!-- <br> -->
+                                <p ng-if="x.address"><strong>Address: </strong>{{x.address}}</p>
+                                <!-- <br> -->
+                                <p><a ng-if="x.deeplink" href={{x.deeplink}}>View Details</a></p>
+                              </div>
+                          </div>
+                        </div>
+                      </div>
+                  </div>
+              </div>
+
+          </div>
+      </table>
+    <!-- </ul> -->
+    <br>
+    <br>
+<!-- </section> -->
+  </div>
+</div>
+</section>
+
+
+<section id="portfolio">
+    <div class="container">
+      <div class="center">
+        <br>
+         
+      </div>
+    </div>
+</section>
